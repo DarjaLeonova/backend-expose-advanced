@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "dotnet-expose.fullname" . }}
+  name: {{ include "backend-expose.fullname" . }}
   labels:
-    {{- include "dotnet-expose.labels" . | nindent 4 }}
+    {{- include "backend-expose.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "dotnet-expose.fullname" . }}
+    name: {{ include "backend-expose.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
