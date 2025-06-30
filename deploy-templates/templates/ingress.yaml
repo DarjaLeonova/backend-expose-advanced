@@ -1,0 +1,25 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: advanced
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: 'more_set_headers X-Frame-Options: none;'
+spec:
+  rules:
+    - host: backend-expose-advanced-bdafa633-expose-advanced-dev.development.krci-dev.cloudmentor.academy
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: root-service
+                port:
+                  number: 80
+          - path: /api/hello
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-service
+                port:
+                  number: 80

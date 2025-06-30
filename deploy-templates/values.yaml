@@ -53,7 +53,7 @@ resources: {}
 
 livenessProbe:
   tcpSocket:
-    port: http 
+    port: http
 readinessProbe:
   tcpSocket:
     port: http
